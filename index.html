@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu ❤️</title>
+
+<style>
+body{
+font-family:'Segoe UI',sans-serif;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('https://images.unsplash.com/photo-1501577316686-a5cbf6c1df7e');
+background-size:cover;
+background-position:center;
+overflow:hidden;
+text-align:center;
+color:#333;
+}
+
+.card{
+background:rgba(255,248,240,0.92);
+padding:40px;
+border-radius:26px;
+box-shadow:0 20px 60px rgba(0,0,0,0.25);
+max-width:720px;
+backdrop-filter:blur(12px);
+animation:pop .8s ease;
+}
+
+@keyframes pop{
+from{transform:scale(.85);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+h1{color:#ff2d55;font-size:36px;margin-bottom:10px}
+.subtitle{font-size:18px;color:#666;min-height:40px}
+p{font-size:18px;line-height:1.6}
+
+button{
+margin:12px;
+padding:14px 28px;
+border:none;
+border-radius:30px;
+font-size:18px;
+cursor:pointer;
+transition:.25s;
+}
+
+#yesBtn{
+background:linear-gradient(45deg,#ff2d55,#ff758c);
+color:white;
+box-shadow:0 10px 25px rgba(255,45,85,0.5);
+}
+
+#yesBtn:hover{transform:scale(1.07)}
+
+#noBtn{background:#eee}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:14px;
+margin-top:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:14px;
+cursor:pointer;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:80%;
+border-radius:12px;
+}
+
+.cinematic{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#0f2027,#000);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+z-index:999;
+transition:1.5s;
+}
+
+.cinematic h1{
+font-size:60px;
+letter-spacing:4px;
+}
+
+.heart{
+position:absolute;
+font-size:22px;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh) scale(.5);opacity:1}
+100%{transform:translateY(-10vh) scale(1.2);opacity:0}
+}
+
+.timeline{
+text-align:left;
+margin-top:10px;
+}
+
+.timeline p{
+margin:8px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+<source src="https://files.catbox.moe/your-nadhif-kota-ini-tak-sama-tanpamu.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="sfxPage" src="https://assets.mixkit.co/sfx/preview/mixkit-soft-click-1119.mp3"></audio>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+<img id="lightboxImg">
+</div>
+
+<div id="cinematicIntro" class="cinematic">
+<div>
+<h1>Our Love Story</h1>
+<p>Setiap cerita besar dimulai dari satu momen kecil...</p>
+</div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="card" id="page1" style="display:none">
+<h1>Tentang Kita Berdua ❤️</h1>
+<div id="subtitle" class="subtitle"></div>
+<p>Kita mungkin hanya dua orang biasa. Tapi setiap momen kecil bersamamu selalu terasa spesial.</p>
+
+<div class="gallery">
+<img src="foto_kita1.jpg" onclick="openImg(this.src)">
+<img src="foto_kita2.jpg" onclick="openImg(this.src)">
+</div>
+
+<button onclick="nextPage(2)">Lanjut ➜</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="card" id="page2" style="display:none">
+<h1>Awal Perkenalan Kita</h1>
+<p>Aku masih ingat bagaimana semuanya dimulai. Dari percakapan sederhana yang akhirnya berubah menjadi cerita panjang.</p>
+<img src="foto_perkenalan.jpg" style="width:100%;border-radius:14px;margin-top:15px" onclick="openImg(this.src)">
+
+<button onclick="nextPage(3)">Lanjut ➜</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card" id="page3" style="display:none">
+<h1>Perjalanan Kita</h1>
+
+<div class="timeline">
+<p>✨ Pertama kali kita mulai ngobrol</p>
+<p>✨ Percakapan panjang yang tidak terasa waktunya</p>
+<p>✨ Tertawa bersama karena hal-hal kecil</p>
+<p>✨ Saling berbagi cerita kehidupan</p>
+</div>
+
+<button onclick="nextPage(4)">Lanjut ➜</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="card" id="page4" style="display:none">
+<h1>Kenangan Virtual Kita</h1>
+
+<div class="gallery">
+<img src="foto_virtual1.jpg" onclick="openImg(this.src)">
+<img src="foto_virtual2.jpg" onclick="openImg(this.src)">
+<img src="foto_virtual3.jpg" onclick="openImg(this.src)">
+<img src="foto_virtual4.jpg" onclick="openImg(this.src)">
+</div>
+
+<button onclick="nextPage(5)">Lanjut ➜</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="card" id="page5" style="display:none">
+<h1>Rekap Teleponan Kita</h1>
+<p>Banyak malam yang kita habiskan hanya untuk berbicara. Kadang sampai lupa waktu.</p>
+
+<img src="foto_call.jpg" style="width:100%;border-radius:14px;margin-top:15px" onclick="openImg(this.src)">
+
+<button onclick="nextPage(6)">Lanjut ➜</button>
+</div>
+
+<!-- PAGE 6 -->
+<div class="card" id="page6" style="display:none">
+<h1>Tentang Kamu</h1>
+<p>Dari sudut pandangku, kamu adalah seseorang yang membuat hari-hariku terasa lebih hangat.</p>
+
+<div class="gallery">
+<img src="dia1.jpg" onclick="openImg(this.src)">
+<img src="dia2.jpg" onclick="openImg(this.src)">
+<img src="dia3.jpg" onclick="openImg(this.src)">
+<img src="dia4.jpg" onclick="openImg(this.src)">
+</div>
+
+<button onclick="nextPage(7)">Lanjut ➜</button>
+</div>
+
+<!-- PAGE 7 -->
+<div class="card" id="page7" style="display:none">
+<h1>Jadi...</h1>
+<p>Aku sudah menceritakan semua perjalanan kecil kita.
+
+Sekarang aku ingin bertanya satu hal...</p>
+
+<button onclick="nextPage(8)">Lanjut</button>
+</div>
+
+<!-- PAGE 8 FINAL -->
+<div class="card" id="page8" style="display:none">
+<h1>Maukah Kamu Jadi Pacarku? ❤️</h1>
+
+<button id="yesBtn">Iya 😍</button>
+<button id="noBtn">Hmm...</button>
+
+<p id="answer"></p>
+</div>
+
+<script>
+
+const intro=document.getElementById("cinematicIntro")
+const pages=[null,
+page1=document.getElementById("page1"),
+page2=document.getElementById("page2"),
+page3=document.getElementById("page3"),
+page4=document.getElementById("page4"),
+page5=document.getElementById("page5"),
+page6=document.getElementById("page6"),
+page7=document.getElementById("page7"),
+page8=document.getElementById("page8")]
+
+const subtitle=document.getElementById("subtitle")
+
+setTimeout(()=>{
+intro.style.opacity=0
+setTimeout(()=>{
+intro.style.display="none"
+pages[1].style.display="block"
+typeText()
+},1500)
+},4000)
+
+const text="Aku ingin berbagi cerita perjalanan kecil kita bersama..."
+let index=0
+
+function typeText(){
+if(index<text.length){
+subtitle.innerHTML+=text.charAt(index)
+index++
+setTimeout(typeText,40)
+}
+}
+
+function nextPage(num){
+const sfx=document.getElementById("sfxPage")
+if(sfx){sfx.currentTime=0;sfx.play()}
+
+pages.forEach(p=>{if(p)p.style.display="none"})
+
+pages[num].style.display="block"
+}
+
+function openImg(src){
+const box=document.getElementById("lightbox")
+const img=document.getElementById("lightboxImg")
+img.src=src
+box.style.display="flex"
+}
+
+function closeLightbox(){
+document.getElementById("lightbox").style.display="none"
+}
+
+const yesBtn=document.getElementById("yesBtn")
+const noBtn=document.getElementById("noBtn")
+
+if(yesBtn){
+yesBtn.onclick=()=>{
+document.getElementById("answer").innerHTML="Sekarang cerita kita benar-benar dimulai ❤️"
+}
+}
+
+if(noBtn){
+noBtn.addEventListener("mouseover",()=>{
+const x=Math.random()*(window.innerWidth-120)
+const y=Math.random()*(window.innerHeight-120)
+noBtn.style.position="absolute"
+noBtn.style.left=x+"px"
+noBtn.style.top=y+"px"
+})
+}
+
+function createHeart(){
+const heart=document.createElement("div")
+heart.innerHTML="❤️"
+heart.classList.add("heart")
+heart.style.left=Math.random()*100+"vw"
+heart.style.animationDuration=(3+Math.random()*3)+"s"
+document.body.appendChild(heart)
+setTimeout(()=>heart.remove(),6000)
+}
+
+setInterval(createHeart,400)
+
+// start music after first click (mobile safe)
+document.body.addEventListener("click",()=>{
+document.getElementById("bgMusic").play()
+},{once:true})
+
+console.assert(document.getElementById('subtitle'),'subtitle element must exist')
+
+</script>
+
+</body>
+</html>
