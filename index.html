@@ -67,11 +67,12 @@ gap:14px;
 margin-top:15px;
 }
 
-.gallery img{ 
-  width:100%;
-  border-radius:14px; 
-  cursor:pointer; 
-  transition:.3s; 
+.gallery img,
+.card img{
+    width:100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius:14px;
 }
 
 .gallery img:hover{
@@ -353,6 +354,7 @@ console.assert(document.getElementById('subtitle'),'subtitle element must exist'
 
 </body>
 </html>
+
 
 
 
