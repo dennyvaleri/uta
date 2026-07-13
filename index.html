@@ -1,873 +1,552 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Our Love Story ❤️</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
 
 body{
-
     margin:0;
     height:100vh;
+    height:100dvh;
     overflow:hidden;
-
-    font-family:
-    'Segoe UI',
-    sans-serif;
-
+    font-family:'Segoe UI',sans-serif;
     color:white;
-
     background:#020617;
-
 }
-
-
-/* BACKGROUND BLUE CINEMATIC */
 
 .bg{
-
     position:fixed;
     inset:0;
-
     background:
-
-    linear-gradient(
-        rgba(5,20,45,.55),
-        rgba(0,5,20,.85)
-    ),
-
+    linear-gradient(rgba(5,20,45,.55),rgba(0,5,20,.85)),
     url('https://images.unsplash.com/photo-1501577316686-a5cbf6c1df7e');
-
     background-size:cover;
     background-position:center;
-
     transform:scale(1.08);
-
     animation:bgMove 20s infinite alternate;
-
     z-index:-2;
-
 }
-
 
 .bg::after{
-
     content:"";
-
     position:absolute;
-
     inset:0;
-
-
-    background:
-
-    radial-gradient(
-        circle,
-        rgba(96,165,250,.25),
-        transparent 60%
-    );
-
-
+    background:radial-gradient(circle,rgba(96,165,250,.25),transparent 60%);
     animation:pulse 5s infinite alternate;
-
 }
-
-
-@keyframes bgMove{
-
-from{
-    transform:scale(1.08);
-}
-
-to{
-    transform:scale(1.18);
-}
-
-}
-
-
-@keyframes pulse{
-
-from{
-opacity:.5;
-}
-
-to{
-opacity:1;
-}
-
-}
-
-
-
-
-/* MUSIC */
 
 audio{
     display:none;
 }
 
-
-
-/* STORY BAR */
-
 .progress{
-
     position:fixed;
-
     top:15px;
     left:20px;
     right:20px;
-
     height:5px;
-
-    background:
-    rgba(255,255,255,.25);
-
+    background:rgba(255,255,255,.25);
     border-radius:20px;
-
     overflow:hidden;
-
     z-index:1000;
-
 }
-
 
 .progress-bar{
-
     height:100%;
-
     width:0%;
-
-
-    background:
-
-    linear-gradient(
-    90deg,
-    #60a5fa,
-    #ec4899
-    );
-
-
+    background:linear-gradient(90deg,#60a5fa,#ec4899);
     transition:.5s;
-
 }
-
-
-
-
-
-/* PAGE */
 
 .page{
-
     position:absolute;
-
     inset:0;
-
-
     display:none;
-
     justify-content:center;
-
     align-items:center;
-
-
     padding:25px;
-
     text-align:center;
-
-
 }
-
 
 .page.active{
-
     display:flex;
-
-    animation:
-
-    cinematic .9s ease;
-
+    animation:cinematic .9s ease;
 }
-
-
 
 .content{
-
-
     max-width:750px;
-
     width:100%;
-
-
     padding:40px 25px;
-
-
-    background:
-
-    linear-gradient(
-    135deg,
-    rgba(255,255,255,.18),
-    rgba(96,165,250,.12)
-    );
-
-
-    backdrop-filter:
-    blur(20px);
-
-
-    border:
-
-    1px solid
-    rgba(255,255,255,.25);
-
-
+    background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(96,165,250,.12));
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.25);
     border-radius:35px;
-
-
-    box-shadow:
-
-    0 30px 80px
-    rgba(0,20,80,.7);
-
-
+    box-shadow:0 30px 80px rgba(0,20,80,.7);
 }
-
-
 
 h1{
-
-    font-size:
-
-    clamp(35px,7vw,65px);
-
-
+    font-size:clamp(35px,7vw,65px);
     margin:10px 0;
-
-
-    text-shadow:
-
-    0 0 20px #60a5fa;
-
+    text-shadow:0 0 20px #60a5fa;
 }
-
 
 p{
-
-    font-size:
-
-    clamp(18px,4vw,24px);
-
-
+    font-size:clamp(18px,4vw,24px);
     line-height:1.7;
-
 }
-
-
 
 .date{
-
     color:#dbeafe;
-
     font-size:20px;
-
 }
-
-
-
-/* BUTTON */
 
 button{
-
-
     margin-top:30px;
-
     padding:15px 40px;
-
-
     border:none;
-
-
     border-radius:50px;
-
-
     font-size:18px;
-
-
     cursor:pointer;
-
-
 }
-
-
 
 .next,
 .yes{
-
-
     color:white;
-
-
-    background:
-
-    linear-gradient(
-    45deg,
-    #2563eb,
-    #ec4899
-    );
-
-
-    box-shadow:
-
-    0 15px 35px
-    rgba(37,99,235,.5);
-
-
+    background:linear-gradient(45deg,#2563eb,#ec4899);
+    box-shadow:0 15px 35px rgba(37,99,235,.5);
 }
-
-
 
 .next:hover,
 .yes:hover{
-
-
-transform:scale(1.08);
-
-
+    transform:scale(1.08);
 }
 
-
-
-/* IMAGE */
-
+.no{
+    background:white;
+    color:#333;
+    position:absolute;
+    transition:left .25s ease, top .25s ease, transform .2s ease;
+    z-index:10;
+}
 
 img,
 video{
-
-
     width:90%;
-
     max-width:450px;
-
-
     max-height:50vh;
-
-
     object-fit:cover;
-
-
     border-radius:30px;
-
-
     margin:20px auto;
-
-
     display:block;
-
-
-    box-shadow:
-
-    0 25px 60px
-    rgba(0,0,0,.5);
-
-
-    animation:
-
-    photoZoom 8s infinite alternate;
-
-
+    box-shadow:0 25px 60px rgba(0,0,0,.5);
+    animation:photoZoom 8s infinite alternate;
 }
 
-
-
-@keyframes photoZoom{
-
-from{
-
-transform:scale(1);
-
-}
-
-to{
-
-transform:scale(1.08);
-
-}
-
-}
-
-
-
-
-
-@keyframes cinematic{
-
-from{
-
-opacity:0;
-
-transform:
-scale(1.08)
-translateY(40px);
-
-filter:blur(10px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:none;
-
-filter:blur(0);
-
-}
-
-}
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Our Love Story ❤️</title>
-
-<style>
-
-*{
-    box-sizing:border-box;
-}
-
-body{
-
-    margin:0;
-    height:100vh;
-    overflow:hidden;
-
-    font-family:
-    'Segoe UI',
-    sans-serif;
-
-    color:white;
-
-    background:#020617;
-
-}
-
-
-/* BACKGROUND BLUE CINEMATIC */
-
-.bg{
-
-    position:fixed;
-    inset:0;
-
-    background:
-
-    linear-gradient(
-        rgba(5,20,45,.55),
-        rgba(0,5,20,.85)
-    ),
-
-    url('https://images.unsplash.com/photo-1501577316686-a5cbf6c1df7e');
-
-    background-size:cover;
-    background-position:center;
-
-    transform:scale(1.08);
-
-    animation:bgMove 20s infinite alternate;
-
-    z-index:-2;
-
-}
-
-
-.bg::after{
-
-    content:"";
-
+.heart{
     position:absolute;
-
-    inset:0;
-
-
-    background:
-
-    radial-gradient(
-        circle,
-        rgba(96,165,250,.25),
-        transparent 60%
-    );
-
-
-    animation:pulse 5s infinite alternate;
-
+    pointer-events:none;
+    animation-name:float;
 }
 
+.sparkle{
+    position:absolute;
+    pointer-events:none;
+    z-index:999;
+    animation:sparkle 1.5s forwards;
+}
 
 @keyframes bgMove{
-
-from{
-    transform:scale(1.08);
+    from{transform:scale(1.08);}
+    to{transform:scale(1.18);}
 }
-
-to{
-    transform:scale(1.18);
-}
-
-}
-
 
 @keyframes pulse{
-
-from{
-opacity:.5;
+    from{opacity:.5;}
+    to{opacity:1;}
 }
-
-to{
-opacity:1;
-}
-
-}
-
-
-
-
-/* MUSIC */
-
-audio{
-    display:none;
-}
-
-
-
-/* STORY BAR */
-
-.progress{
-
-    position:fixed;
-
-    top:15px;
-    left:20px;
-    right:20px;
-
-    height:5px;
-
-    background:
-    rgba(255,255,255,.25);
-
-    border-radius:20px;
-
-    overflow:hidden;
-
-    z-index:1000;
-
-}
-
-
-.progress-bar{
-
-    height:100%;
-
-    width:0%;
-
-
-    background:
-
-    linear-gradient(
-    90deg,
-    #60a5fa,
-    #ec4899
-    );
-
-
-    transition:.5s;
-
-}
-
-
-
-
-
-/* PAGE */
-
-.page{
-
-    position:absolute;
-
-    inset:0;
-
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-
-    padding:25px;
-
-    text-align:center;
-
-
-}
-
-
-.page.active{
-
-    display:flex;
-
-    animation:
-
-    cinematic .9s ease;
-
-}
-
-
-
-.content{
-
-
-    max-width:750px;
-
-    width:100%;
-
-
-    padding:40px 25px;
-
-
-    background:
-
-    linear-gradient(
-    135deg,
-    rgba(255,255,255,.18),
-    rgba(96,165,250,.12)
-    );
-
-
-    backdrop-filter:
-    blur(20px);
-
-
-    border:
-
-    1px solid
-    rgba(255,255,255,.25);
-
-
-    border-radius:35px;
-
-
-    box-shadow:
-
-    0 30px 80px
-    rgba(0,20,80,.7);
-
-
-}
-
-
-
-h1{
-
-    font-size:
-
-    clamp(35px,7vw,65px);
-
-
-    margin:10px 0;
-
-
-    text-shadow:
-
-    0 0 20px #60a5fa;
-
-}
-
-
-p{
-
-    font-size:
-
-    clamp(18px,4vw,24px);
-
-
-    line-height:1.7;
-
-}
-
-
-
-.date{
-
-    color:#dbeafe;
-
-    font-size:20px;
-
-}
-
-
-
-/* BUTTON */
-
-button{
-
-
-    margin-top:30px;
-
-    padding:15px 40px;
-
-
-    border:none;
-
-
-    border-radius:50px;
-
-
-    font-size:18px;
-
-
-    cursor:pointer;
-
-
-}
-
-
-
-.next,
-.yes{
-
-
-    color:white;
-
-
-    background:
-
-    linear-gradient(
-    45deg,
-    #2563eb,
-    #ec4899
-    );
-
-
-    box-shadow:
-
-    0 15px 35px
-    rgba(37,99,235,.5);
-
-
-}
-
-
-
-.next:hover,
-.yes:hover{
-
-
-transform:scale(1.08);
-
-
-}
-
-
-
-/* IMAGE */
-
-
-img,
-video{
-
-
-    width:90%;
-
-    max-width:450px;
-
-
-    max-height:50vh;
-
-
-    object-fit:cover;
-
-
-    border-radius:30px;
-
-
-    margin:20px auto;
-
-
-    display:block;
-
-
-    box-shadow:
-
-    0 25px 60px
-    rgba(0,0,0,.5);
-
-
-    animation:
-
-    photoZoom 8s infinite alternate;
-
-
-}
-
-
 
 @keyframes photoZoom{
-
-from{
-
-transform:scale(1);
-
+    from{transform:scale(1);}
+    to{transform:scale(1.08);}
 }
-
-to{
-
-transform:scale(1.08);
-
-}
-
-}
-
-
-
-
 
 @keyframes cinematic{
-
-from{
-
-opacity:0;
-
-transform:
-scale(1.08)
-translateY(40px);
-
-filter:blur(10px);
-
+    from{
+        opacity:0;
+        transform:scale(1.08) translateY(40px);
+        filter:blur(10px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+        filter:blur(0);
+    }
 }
 
-to{
-
-opacity:1;
-
-transform:none;
-
-filter:blur(0);
-
+@keyframes float{
+    from{
+        transform:translateY(100vh) rotate(0deg);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-20vh) rotate(360deg);
+        opacity:0;
+    }
 }
 
+@keyframes sparkle{
+    from{
+        transform:scale(.5) translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:scale(2) translateY(-100px);
+        opacity:0;
+    }
 }
+
+@media(max-width:600px){
+    .content{
+        padding:25px 18px;
+        border-radius:25px;
+    }
+
+    h1{
+        font-size:38px;
+    }
+
+    p{
+        font-size:18px;
+    }
+
+    .date{
+        font-size:16px;
+    }
+
+    img,
+    video{
+        width:95%;
+        max-height:45vh;
+        border-radius:20px;
+    }
+
+    button{
+        padding:13px 32px;
+        font-size:16px;
+    }
+
+    .progress{
+        top:10px;
+        left:12px;
+        right:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<audio id="music" loop>
+    <source src="backsound.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="clickSound">
+    <source src="click.mp3" type="audio/mpeg">
+</audio>
+
+<div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="page active">
+    <div class="content">
+        <h1>Our Love Story ❤️</h1>
+        <p>
+            Sudah 6 bulan, yey.<br>
+            Yuk lihat dikit rekapnyaa
+        </p>
+        <button class="next" onclick="startStory()">MULAI ❤️</button>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content">
+        <h1>Chat pertama kita</h1>
+        <div class="date">14 Januari 2026</div>
+        <img src="foto1.jpeg">
+        <p>Awal kecil dari cerita besar kita.</p>
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content">
+        <h1>Telfonan pertama kita</h1>
+        <div class="date">14 Januari 2026</div>
+        <img src="foto2.jpeg">
+        <p>
+            Dari chat, berubah jadi suara yang
+            selalu ingin didengar.
+        </p>
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content">
+        <h1>25 Januari 2026</h1>
+        <p>
+            Aku mabok dan kamu masih<br>
+            nanya nanyain akuu 🥺
+        </p>
+        <video controls>
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content">
+        <h1>16 Februari 2026</h1>
+        <p>
+            Post foto kamu pertama kali<br>
+            di story IG.
+            <br><br>
+            SEMUA ORANG HARUS TAU<br>
+            AKU PUNYA PACAR CANTIKK!!!! ❤️
+        </p>
+        <img src="foto3.jpeg">
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content">
+        <h1>17 Februari 2026</h1>
+        <p>
+            Muka aku muncul pertama kali<br>
+            di story kamuuu ❤️
+            <br><br>
+            Merasa dicintaiii
+        </p>
+        <img src="foto4.jpeg">
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content">
+        <h1>Selama 6 bulan ini...</h1>
+        <p>
+            Menyenangkan sekali sayangg ❤️
+            <br><br>
+            Banyak banget cerita.<br>
+            Banyak ketawa.<br>
+            Banyak belajar.
+        </p>
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content">
+        <h1>Aku sadar...</h1>
+        <p>
+            Sekarang aku sudah tidak
+            merencanakan masa depan
+            hanya untuk diriku sendiri.
+            <br><br>
+            Karena sekarang ada kamu
+            di dalam rencana-rencanaku.
+        </p>
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
+</div>
+
+<div class="page">
+    <div class="content">
+        <h1>Satu pertanyaan...</h1>
+        <p>
+            Tapi ternyata ada satu hal
+            yang harus kita selesaikan.
+            <br><br>
+            Sesuatu yang sebenarnya
+            sudah lama kita tahu...
+        </p>
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
+</div>
+
+<div class="page" id="proposal">
+    <div class="content">
+        <h1>Kamu mau gak...</h1>
+        <h1>JADI PACAR AKU? ❤️</h1>
+
+        <button class="yes" onclick="yes()">MAUUUU ❤️</button>
+
+        <button 
+            class="no" 
+            id="noBtn"
+            style="left:60%; top:70%;"
+        >
+            Tidak 😢
+        </button>
+    </div>
+</div>
+
+<div class="page" id="finish">
+    <div class="content">
+        <h1>YEYYY ❤️❤️❤️</h1>
+        <p>
+            14 JULI 2026<br>
+            Kita jadikan hari kita yaa.
+            <br><br>
+            Terima kasih sudah memilih aku ❤️
+        </p>
+        <img src="foto_akhir.jpeg">
+    </div>
+</div>
+
+<script>
+const pages = document.querySelectorAll(".page");
+const progressBar = document.getElementById("progressBar");
+const music = document.getElementById("music");
+const clickSound = document.getElementById("clickSound");
+const noBtn = document.getElementById("noBtn");
+
+let current = 0;
+
+function updateProgress(){
+    let percent = (current / (pages.length - 1)) * 100;
+    progressBar.style.width = percent + "%";
+}
+
+function startStory(){
+    music.volume = 0.6;
+    music.play().catch(()=>{});
+    nextPage();
+}
+
+function playClick(){
+    clickSound.volume = 0.4;
+    clickSound.currentTime = 0;
+    clickSound.play().catch(()=>{});
+}
+
+function nextPage(){
+    playClick();
+
+    pages[current].classList.remove("active");
+
+    current++;
+
+    if(current >= pages.length){
+        current = pages.length - 1;
+    }
+
+    pages[current].classList.add("active");
+
+    updateProgress();
+}
+
+function yes(){
+    playClick();
+
+    document.getElementById("proposal").classList.remove("active");
+    document.getElementById("finish").classList.add("active");
+
+    current = pages.length - 1;
+
+    updateProgress();
+    loveExplosion();
+}
+
+function moveButton(){
+    const buttonWidth = noBtn.offsetWidth;
+    const buttonHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - buttonWidth - 20;
+    const maxY = window.innerHeight - buttonHeight - 20;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    noBtn.style.transform =
+    "rotate(" + (Math.random() * 30 - 15) + "deg)";
+}
+
+noBtn.addEventListener("mouseenter", moveButton);
+
+noBtn.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moveButton();
+},{passive:false});
+
+noBtn.addEventListener("click", function(e){
+    e.preventDefault();
+    moveButton();
+});
+
+function createHeart(){
+    let heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = ["💙","🤍","❤️","✨"][
+        Math.floor(Math.random() * 4)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "-20px";
+    heart.style.fontSize = (15 + Math.random() * 30) + "px";
+    heart.style.animation = 
+    "float " + (3 + Math.random() * 4) + "s linear";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },6000);
+}
+
+setInterval(createHeart,400);
+
+function loveExplosion(){
+    for(let i = 0; i < 80; i++){
+        setTimeout(()=>{
+            let item = document.createElement("div");
+
+            item.className = "sparkle";
+
+            item.innerHTML = ["❤️","💙","✨","💕"][
+                Math.floor(Math.random() * 4)
+            ];
+
+            item.style.left = Math.random() * 100 + "vw";
+            item.style.top = Math.random() * 100 + "vh";
+            item.style.fontSize = (20 + Math.random() * 35) + "px";
+
+            document.body.appendChild(item);
+
+            setTimeout(()=>{
+                item.remove();
+            },1500);
+        },i * 30);
+    }
+}
+</script>
+
+</body>
+</html>
