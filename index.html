@@ -3,360 +3,411 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Kamu ❤️</title>
+<title>Our Love Story ❤️</title>
 
 <style>
+*{box-sizing:border-box}
+
 body{
-font-family:'Segoe UI',sans-serif;
-margin:0;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('https://images.unsplash.com/photo-1501577316686-a5cbf6c1df7e');
-background-size:cover;
-background-position:center;
-overflow:hidden;
-text-align:center;
-color:#333;
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    font-family:'Segoe UI',sans-serif;
+    background:#000;
+    color:white;
 }
 
-.card{
-background:rgba(255,248,240,0.92);
-padding:40px;
-border-radius:26px;
-box-shadow:0 20px 60px rgba(0,0,0,0.25);
-max-width:720px;
-backdrop-filter:blur(12px);
-animation:pop .8s ease;
+audio{display:none}
+
+.bg{
+    position:fixed;
+    inset:0;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.75)),
+    url('background.jpg');
+    background-size:cover;
+    background-position:center;
+    filter:blur(2px);
+    transform:scale(1.05);
+    z-index:-2;
 }
 
-@keyframes pop{
-from{transform:scale(.85);opacity:0}
-to{transform:scale(1);opacity:1}
+.bg::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle,#ff2d5540,transparent 55%);
+    animation:pulseBg 5s infinite alternate;
 }
 
-h1{color:#ff2d55;font-size:36px;margin-bottom:10px}
-.subtitle{font-size:18px;color:#666;min-height:40px}
-p{font-size:18px;line-height:1.6}
+.progress{
+    position:fixed;
+    top:15px;
+    left:20px;
+    right:20px;
+    height:6px;
+    background:rgba(255,255,255,.25);
+    border-radius:99px;
+    z-index:1000;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#ff2d55,#ffb6c1);
+    border-radius:99px;
+    transition:.5s;
+}
+
+.page{
+    position:absolute;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:28px;
+}
+
+.page.active{
+    display:flex;
+    animation:cinematicIn .9s ease;
+}
+
+.content{
+    width:100%;
+    max-width:720px;
+    padding:35px 25px;
+    border-radius:35px;
+    background:rgba(255,255,255,.13);
+    backdrop-filter:blur(18px);
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+    border:1px solid rgba(255,255,255,.18);
+}
+
+h1{
+    font-size:clamp(34px,7vw,62px);
+    margin:10px 0 18px;
+    line-height:1.15;
+}
+
+p{
+    font-size:clamp(18px,4vw,23px);
+    line-height:1.7;
+}
+
+.date{
+    color:#ffd1dc;
+    font-size:19px;
+    margin-bottom:15px;
+}
 
 button{
-margin:12px;
-padding:14px 28px;
-border:none;
-border-radius:30px;
-font-size:18px;
-cursor:pointer;
-transition:.25s;
+    margin:25px 10px 0;
+    padding:15px 35px;
+    border:none;
+    border-radius:999px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.3s;
 }
 
-#yesBtn{
-background:linear-gradient(45deg,#ff2d55,#ff758c);
-color:white;
-box-shadow:0 10px 25px rgba(255,45,85,0.5);
+.next,.yes{
+    background:linear-gradient(45deg,#ff2d55,#ff8fab);
+    color:white;
+    box-shadow:0 12px 35px rgba(255,45,85,.45);
 }
 
-#yesBtn:hover{transform:scale(1.07)}
-
-#noBtn{background:#eee}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:14px;
-margin-top:15px;
+.next:hover,.yes:hover{
+    transform:scale(1.08);
 }
 
-.gallery img,
-.card img{
-    width:100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius:14px;
+.no{
+    background:white;
+    color:#333;
+    position:absolute;
 }
 
-.gallery img:hover{
-transform:scale(1.05);
+img,video{
+    width:90%;
+    max-width:440px;
+    max-height:48vh;
+    object-fit:cover;
+    border-radius:28px;
+    margin:20px auto;
+    display:block;
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
 }
 
-.lightbox{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.85);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:1000;
+.intro .content{
+    background:transparent;
+    box-shadow:none;
+    border:none;
 }
 
-.lightbox img{
-max-width:90%;
-max-height:80%;
-border-radius:12px;
+.intro h1{
+    animation:zoomGlow 2s ease;
+    text-shadow:0 0 30px #ff2d55;
 }
 
-.cinematic{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:radial-gradient(circle,#0f2027,#000);
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-z-index:999;
-transition:1.5s;
-}
-
-.cinematic h1{
-font-size:60px;
-letter-spacing:4px;
+.heart,.sparkle{
+    position:absolute;
+    pointer-events:none;
+    z-index:5;
 }
 
 .heart{
-position:absolute;
-font-size:22px;
-animation:float 6s linear infinite;
+    animation:float 5s linear infinite;
+}
+
+.sparkle{
+    animation:sparkle 1.4s ease-out forwards;
+}
+
+.final h1{
+    animation:heartbeat 1s infinite;
+}
+
+@keyframes cinematicIn{
+    from{opacity:0;transform:scale(1.08) translateY(40px);filter:blur(10px)}
+    to{opacity:1;transform:scale(1) translateY(0);filter:blur(0)}
+}
+
+@keyframes zoomGlow{
+    from{opacity:0;transform:scale(.45);filter:blur(10px)}
+    to{opacity:1;transform:scale(1);filter:blur(0)}
 }
 
 @keyframes float{
-0%{transform:translateY(100vh) scale(.5);opacity:1}
-100%{transform:translateY(-10vh) scale(1.2);opacity:0}
+    from{transform:translateY(100vh) rotate(0deg);opacity:1}
+    to{transform:translateY(-15vh) rotate(360deg);opacity:0}
 }
 
-.timeline{
-text-align:left;
-margin-top:10px;
+@keyframes sparkle{
+    from{transform:scale(.5);opacity:1}
+    to{transform:scale(2.5) translateY(-80px);opacity:0}
 }
 
-.timeline p{
-margin:8px 0;
+@keyframes heartbeat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.08)}
 }
 
+@keyframes pulseBg{
+    from{opacity:.4}
+    to{opacity:1}
+}
 </style>
 </head>
 
 <body>
 
-<audio id="bgMusic" loop>
-<source src="https://files.catbox.moe/your-nadhif-kota-ini-tak-sama-tanpamu.mp3" type="audio/mpeg">
+<div class="bg"></div>
+
+<audio id="music" loop>
+    <source src="backsound.mp3" type="audio/mpeg">
 </audio>
 
-<audio id="sfxPage" src="https://assets.mixkit.co/sfx/preview/mixkit-soft-click-1119.mp3"></audio>
+<audio id="clickSound">
+    <source src="click.mp3" type="audio/mpeg">
+</audio>
 
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-<img id="lightboxImg">
+<div class="progress">
+    <div class="progress-bar" id="progressBar"></div>
 </div>
 
-<div id="cinematicIntro" class="cinematic">
-<div>
-<h1>Our Love Story</h1>
-<p>Setiap cerita besar dimulai dari satu momen kecil...</p>
-</div>
-</div>
-
-<!-- PAGE 1 -->
-<div class="card" id="page1" style="display:none">
-<h1>Tentang Kita Berdua ❤️</h1>
-<div id="subtitle" class="subtitle"></div>
-<p>Kita mungkin hanya dua orang biasa. Tapi setiap momen kecil bersamamu selalu terasa spesial.</p>
-
-<div class="gallery">
-<img src="foto_kita1.jpeg" onclick="openImg(this.src)">
-<img src="foto_kita2.jpeg" onclick="openImg(this.src)">
+<div class="page active intro">
+    <div class="content">
+        <h1>Our Love Story ❤️</h1>
+        <p>Sudah 6 bulan, yey.<br>Yuk lihat dikit rekapnyaa</p>
+        <button class="next" onclick="startStory()">MULAI</button>
+    </div>
 </div>
 
-<button onclick="nextPage(2)">Lanjut ➜</button>
+<div class="page">
+    <div class="content">
+        <h1>Chat pertama kita</h1>
+        <div class="date">14 Januari 2026</div>
+        <img src="foto1.jpg">
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
 </div>
 
-<!-- PAGE 2 -->
-<div class="card" id="page2" style="display:none">
-<h1>Awal Perkenalan Kita</h1>
-<p>Aku masih ingat bagaimana semuanya dimulai. Dari percakapan sederhana yang akhirnya berubah menjadi cerita panjang.</p>
-<img src="foto_perkenalan.jpeg" style="width:100%;border-radius:14px;margin-top:15px" onclick="openImg(this.src)">
-
-<button onclick="nextPage(3)">Lanjut ➜</button>
+<div class="page">
+    <div class="content">
+        <h1>Telfonan pertama kita</h1>
+        <div class="date">14 Januari 2026</div>
+        <img src="foto2.jpg">
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
 </div>
 
-<!-- PAGE 3 -->
-<div class="card" id="page3" style="display:none">
-<h1>Perjalanan Kita</h1>
-
-<div class="timeline">
-<p>✨ Pertama kali kita mulai ngobrol</p>
-<p>✨ Percakapan panjang yang tidak terasa waktunya</p>
-<p>✨ Tertawa bersama karena hal-hal kecil</p>
-<p>✨ Saling berbagi cerita kehidupan</p>
+<div class="page">
+    <div class="content">
+        <h1>25 Januari 2026</h1>
+        <p>Aku mabok dan kamu masih nanya-nanyain akuu 🥺</p>
+        <video controls>
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
 </div>
 
-<button onclick="nextPage(4)">Lanjut ➜</button>
+<div class="page">
+    <div class="content">
+        <h1>16 Februari 2026</h1>
+        <p>
+            Post foto kamu pertama kali di story IG.<br><br>
+            SEMUA ORANG HARUS TAU<br>
+            AKU PUNYA PACAR CANTIKK!!!!
+        </p>
+        <img src="foto3.jpg">
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
 </div>
 
-<!-- PAGE 4 -->
-<div class="card" id="page4" style="display:none">
-<h1>Kenangan Virtual Kita</h1>
-
-<div class="gallery">
-<img src="foto_virtual1.jpeg" onclick="openImg(this.src)">
-<img src="foto_virtual2.jpeg" onclick="openImg(this.src)">
-<img src="foto_virtual3.jpeg" onclick="openImg(this.src)">
-<img src="foto_virtual4.jpeg" onclick="openImg(this.src)">
+<div class="page">
+    <div class="content">
+        <h1>Selama 6 bulan ini...</h1>
+        <p>
+            Menyenangkan sekali sayangg ❤️<br><br>
+            Banyak ketawa, banyak cerita, kadang berantem,
+            tapi tetap saling belajar.
+        </p>
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
 </div>
 
-<button onclick="nextPage(5)">Lanjut ➜</button>
+<div class="page">
+    <div class="content">
+        <h1>Aku sadar...</h1>
+        <p>
+            Sekarang aku sudah tidak bisa merencanakan masa depan
+            hanya untuk diriku sendiri.<br><br>
+            Karena ada kamu di dalam rencana-rencanaku.
+        </p>
+        <button class="next" onclick="nextPage()">LANJUT</button>
+    </div>
 </div>
 
-<!-- PAGE 5 -->
-<div class="card" id="page5" style="display:none">
-<h1>Rekap Teleponan Kita</h1>
-<p>Banyak malam yang kita habiskan hanya untuk berbicara. Kadang sampai lupa waktu.</p>
+<div class="page" id="proposal">
+    <div class="content">
+        <h1>Kamu mau gak...</h1>
+        <h1>JADI PACAR AKU? ❤️</h1>
 
-<img src="foto_call.jpeg" style="width:100%;border-radius:14px;margin-top:15px" onclick="openImg(this.src)">
-
-<button onclick="nextPage(6)">Lanjut ➜</button>
+        <button class="yes" onclick="yes()">MAUUUU ❤️</button>
+        <button class="no" id="noBtn">Tidak 😢</button>
+    </div>
 </div>
 
-<!-- PAGE 6 -->
-<div class="card" id="page6" style="display:none">
-<h1>Tentang Kamu</h1>
-<p>Dari sudut pandangku, kamu adalah seseorang yang membuat hari-hariku terasa lebih hangat.</p>
-
-<div class="gallery">
-<img src="dia1.jpeg" onclick="openImg(this.src)">
-<img src="dia2.jpeg" onclick="openImg(this.src)">
-<img src="dia3.jpeg" onclick="openImg(this.src)">
-<img src="dia4.jpeg" onclick="openImg(this.src)">
-</div>
-
-<button onclick="nextPage(7)">Lanjut ➜</button>
-</div>
-
-<!-- PAGE 7 -->
-<div class="card" id="page7" style="display:none">
-<h1>Jadi...</h1>
-<p>Aku sudah menceritakan semua perjalanan kecil kita.
-
-Sekarang aku ingin bertanya satu hal...</p>
-
-<button onclick="nextPage(8)">Lanjut</button>
-</div>
-
-<!-- PAGE 8 FINAL -->
-<div class="card" id="page8" style="display:none">
-<h1>Maukah Kamu Jadi Pacarku? ❤️</h1>
-
-<button id="yesBtn">Iya 😍</button>
-<button id="noBtn">Hmm...</button>
-
-<p id="answer"></p>
+<div class="page final" id="finish">
+    <div class="content">
+        <h1>YEYYY ❤️</h1>
+        <p>
+            14 JULI 2026<br>
+            Kita jadikan hari kita yaa.<br><br>
+            Terima kasih sudah memilih aku.
+        </p>
+        <img src="foto_akhir.jpg">
+    </div>
 </div>
 
 <script>
+const pages = document.querySelectorAll(".page");
+const progressBar = document.getElementById("progressBar");
+const music = document.getElementById("music");
+const clickSound = document.getElementById("clickSound");
+const noBtn = document.getElementById("noBtn");
 
-const intro=document.getElementById("cinematicIntro")
-const pages=[null,
-page1=document.getElementById("page1"),
-page2=document.getElementById("page2"),
-page3=document.getElementById("page3"),
-page4=document.getElementById("page4"),
-page5=document.getElementById("page5"),
-page6=document.getElementById("page6"),
-page7=document.getElementById("page7"),
-page8=document.getElementById("page8")]
+let current = 0;
 
-const subtitle=document.getElementById("subtitle")
-
-setTimeout(()=>{
-intro.style.opacity=0
-setTimeout(()=>{
-intro.style.display="none"
-pages[1].style.display="block"
-typeText()
-},1500)
-},4000)
-
-const text="Aku ingin berbagi cerita perjalanan kecil kita bersama..."
-let index=0
-
-function typeText(){
-if(index<text.length){
-subtitle.innerHTML+=text.charAt(index)
-index++
-setTimeout(typeText,40)
-}
+function updateProgress(){
+    let percent = (current / (pages.length - 1)) * 100;
+    progressBar.style.width = percent + "%";
 }
 
-function nextPage(num){
-const sfx=document.getElementById("sfxPage")
-if(sfx){sfx.currentTime=0;sfx.play()}
-
-pages.forEach(p=>{if(p)p.style.display="none"})
-
-pages[num].style.display="block"
+function playClick(){
+    clickSound.currentTime = 0;
+    clickSound.play().catch(()=>{});
 }
 
-function openImg(src){
-const box=document.getElementById("lightbox")
-const img=document.getElementById("lightboxImg")
-img.src=src
-box.style.display="flex"
+function startStory(){
+    music.play().catch(()=>{});
+    nextPage();
 }
 
-function closeLightbox(){
-document.getElementById("lightbox").style.display="none"
+function nextPage(){
+    playClick();
+
+    pages[current].classList.remove("active");
+    current++;
+
+    if(current >= pages.length){
+        current = pages.length - 1;
+    }
+
+    pages[current].classList.add("active");
+    updateProgress();
 }
 
-const yesBtn=document.getElementById("yesBtn")
-const noBtn=document.getElementById("noBtn")
+function yes(){
+    playClick();
 
-if(yesBtn){
-yesBtn.onclick=()=>{
-document.getElementById("answer").innerHTML="Sekarang cerita kita benar-benar dimulai ❤️"
-}
+    document.getElementById("proposal").classList.remove("active");
+    document.getElementById("finish").classList.add("active");
+
+    current = pages.length - 1;
+    updateProgress();
+
+    confettiLove();
 }
 
-if(noBtn){
-noBtn.addEventListener("mouseover",()=>{
-const x=Math.random()*(window.innerWidth-120)
-const y=Math.random()*(window.innerHeight-120)
-noBtn.style.position="absolute"
-noBtn.style.left=x+"px"
-noBtn.style.top=y+"px"
-})
+function moveNo(){
+    const maxX = window.innerWidth - 130;
+    const maxY = window.innerHeight - 70;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
 }
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("click", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
 function createHeart(){
-const heart=document.createElement("div")
-heart.innerHTML="❤️"
-heart.classList.add("heart")
-heart.style.left=Math.random()*100+"vw"
-heart.style.animationDuration=(3+Math.random()*3)+"s"
-document.body.appendChild(heart)
-setTimeout(()=>heart.remove(),6000)
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = (14 + Math.random() * 26) + "px";
+    h.style.animationDuration = (3 + Math.random() * 4) + "s";
+    document.body.appendChild(h);
+
+    setTimeout(()=>h.remove(),6000);
 }
 
-setInterval(createHeart,400)
+setInterval(createHeart,450);
 
-// start music after first click (mobile safe)
-document.body.addEventListener("click",()=>{
-document.getElementById("bgMusic").play()
-},{once:true})
+function confettiLove(){
+    for(let i=0;i<80;i++){
+        setTimeout(()=>{
+            const s = document.createElement("div");
+            s.className = "sparkle";
+            s.innerHTML = ["❤️","💕","✨","💖"][Math.floor(Math.random()*4)];
+            s.style.left = Math.random() * 100 + "vw";
+            s.style.top = Math.random() * 100 + "vh";
+            s.style.fontSize = (18 + Math.random()*28) + "px";
+            document.body.appendChild(s);
 
-console.assert(document.getElementById('subtitle'),'subtitle element must exist')
-
+            setTimeout(()=>s.remove(),1600);
+        }, i * 25);
+    }
+}
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
