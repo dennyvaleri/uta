@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>Our Love Story ❤️</title>
 
 <style>
@@ -20,6 +21,7 @@ body{
     background:#020617;
 }
 
+/* BACKGROUND */
 .bg{
     position:fixed;
     inset:0;
@@ -41,10 +43,12 @@ body{
     animation:pulse 5s infinite alternate;
 }
 
+/* AUDIO */
 audio{
     display:none;
 }
 
+/* PROGRESS BAR */
 .progress{
     position:fixed;
     top:15px;
@@ -64,6 +68,7 @@ audio{
     transition:.5s;
 }
 
+/* PAGE */
 .page{
     position:absolute;
     inset:0;
@@ -79,6 +84,7 @@ audio{
     animation:cinematic .9s ease;
 }
 
+/* CARD */
 .content{
     max-width:750px;
     width:100%;
@@ -90,6 +96,7 @@ audio{
     box-shadow:0 30px 80px rgba(0,20,80,.7);
 }
 
+/* TEXT */
 h1{
     font-size:clamp(35px,7vw,65px);
     margin:10px 0;
@@ -106,6 +113,7 @@ p{
     font-size:20px;
 }
 
+/* BUTTON */
 button{
     margin-top:30px;
     padding:15px 40px;
@@ -127,6 +135,7 @@ button{
     transform:scale(1.08);
 }
 
+/* TOMBOL TIDAK */
 .no{
     background:white;
     color:#333;
@@ -135,6 +144,7 @@ button{
     z-index:10;
 }
 
+/* IMAGE / VIDEO */
 img,
 video{
     width:90%;
@@ -148,6 +158,7 @@ video{
     animation:photoZoom 8s infinite alternate;
 }
 
+/* EFFECTS */
 .heart{
     position:absolute;
     pointer-events:none;
@@ -161,19 +172,32 @@ video{
     animation:sparkle 1.5s forwards;
 }
 
+/* ANIMATION */
 @keyframes bgMove{
-    from{transform:scale(1.08);}
-    to{transform:scale(1.18);}
+    from{
+        transform:scale(1.08);
+    }
+    to{
+        transform:scale(1.18);
+    }
 }
 
 @keyframes pulse{
-    from{opacity:.5;}
-    to{opacity:1;}
+    from{
+        opacity:.5;
+    }
+    to{
+        opacity:1;
+    }
 }
 
 @keyframes photoZoom{
-    from{transform:scale(1);}
-    to{transform:scale(1.08);}
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.08);
+    }
 }
 
 @keyframes cinematic{
@@ -211,6 +235,7 @@ video{
     }
 }
 
+/* MOBILE */
 @media(max-width:600px){
     .content{
         padding:25px 18px;
@@ -254,69 +279,93 @@ video{
 
 <div class="bg"></div>
 
-<audio id="music" loop>
-    <source src="backsound.mp3" type="audio/mpeg">
+<!-- BACKSOUND -->
+<audio id="music" loop preload="auto">
+    <source src="./backsound.mp3" type="audio/mpeg">
 </audio>
 
-<audio id="clickSound">
-    <source src="click.mp3" type="audio/mpeg">
+<!-- SOUND CLICK OPSIONAL -->
+<audio id="clickSound" preload="auto">
+    <source src="./click.mp3" type="audio/mpeg">
 </audio>
 
+<!-- PROGRESS -->
 <div class="progress">
     <div class="progress-bar" id="progressBar"></div>
 </div>
 
+<!-- INTRO -->
 <div class="page active">
     <div class="content">
         <h1>Our Love Story ❤️</h1>
+
         <p>
             Sudah 6 bulan, yey.<br>
             Yuk lihat dikit rekapnyaa
         </p>
+
         <button class="next" onclick="startStory()">MULAI ❤️</button>
     </div>
 </div>
 
+<!-- PAGE 1 -->
 <div class="page">
     <div class="content">
         <h1>Chat pertama kita</h1>
+
         <div class="date">14 Januari 2026</div>
+
         <img src="foto1.jpeg">
-        <p>Awal kecil dari cerita besar kita.</p>
+
+        <p>
+            Awal kecil dari cerita besar kita.
+        </p>
+
         <button class="next" onclick="nextPage()">LANJUT</button>
     </div>
 </div>
 
+<!-- PAGE 2 -->
 <div class="page">
     <div class="content">
         <h1>Telfonan pertama kita</h1>
+
         <div class="date">14 Januari 2026</div>
+
         <img src="foto2.jpeg">
+
         <p>
             Dari chat, berubah jadi suara yang
             selalu ingin didengar.
         </p>
+
         <button class="next" onclick="nextPage()">LANJUT</button>
     </div>
 </div>
 
+<!-- PAGE 3 VIDEO -->
 <div class="page">
     <div class="content">
         <h1>25 Januari 2026</h1>
+
         <p>
             Aku mabok dan kamu masih<br>
             nanya nanyain akuu 🥺
         </p>
-        <video controls>
+
+        <video class="story-video" autoplay muted playsinline controls>
             <source src="video1.mp4" type="video/mp4">
         </video>
+
         <button class="next" onclick="nextPage()">LANJUT</button>
     </div>
 </div>
 
+<!-- PAGE 4 -->
 <div class="page">
     <div class="content">
         <h1>16 Februari 2026</h1>
+
         <p>
             Post foto kamu pertama kali<br>
             di story IG.
@@ -324,28 +373,36 @@ video{
             SEMUA ORANG HARUS TAU<br>
             AKU PUNYA PACAR CANTIKK!!!! ❤️
         </p>
+
         <img src="foto3.jpeg">
+
         <button class="next" onclick="nextPage()">LANJUT</button>
     </div>
 </div>
 
+<!-- PAGE 5 -->
 <div class="page">
     <div class="content">
         <h1>17 Februari 2026</h1>
+
         <p>
             Muka aku muncul pertama kali<br>
             di story kamuuu ❤️
             <br><br>
             Merasa dicintaiii
         </p>
+
         <img src="foto4.jpeg">
+
         <button class="next" onclick="nextPage()">LANJUT</button>
     </div>
 </div>
 
+<!-- PAGE 6 -->
 <div class="page">
     <div class="content">
         <h1>Selama 6 bulan ini...</h1>
+
         <p>
             Menyenangkan sekali sayangg ❤️
             <br><br>
@@ -353,13 +410,16 @@ video{
             Banyak ketawa.<br>
             Banyak belajar.
         </p>
+
         <button class="next" onclick="nextPage()">LANJUT</button>
     </div>
 </div>
 
+<!-- PAGE 7 -->
 <div class="page">
     <div class="content">
         <h1>Aku sadar...</h1>
+
         <p>
             Sekarang aku sudah tidak
             merencanakan masa depan
@@ -368,13 +428,16 @@ video{
             Karena sekarang ada kamu
             di dalam rencana-rencanaku.
         </p>
+
         <button class="next" onclick="nextPage()">LANJUT</button>
     </div>
 </div>
 
+<!-- PAGE 8 -->
 <div class="page">
     <div class="content">
         <h1>Satu pertanyaan...</h1>
+
         <p>
             Tapi ternyata ada satu hal
             yang harus kita selesaikan.
@@ -382,13 +445,16 @@ video{
             Sesuatu yang sebenarnya
             sudah lama kita tahu...
         </p>
+
         <button class="next" onclick="nextPage()">LANJUT</button>
     </div>
 </div>
 
+<!-- PROPOSAL -->
 <div class="page" id="proposal">
     <div class="content">
         <h1>Kamu mau gak...</h1>
+
         <h1>JADI PACAR AKU? ❤️</h1>
 
         <button class="yes" onclick="yes()">MAUUUU ❤️</button>
@@ -403,15 +469,18 @@ video{
     </div>
 </div>
 
+<!-- FINAL -->
 <div class="page" id="finish">
     <div class="content">
         <h1>YEYYY ❤️❤️❤️</h1>
+
         <p>
             14 JULI 2026<br>
             Kita jadikan hari kita yaa.
             <br><br>
             Terima kasih sudah memilih aku ❤️
         </p>
+
         <img src="foto_akhir.jpeg">
     </div>
 </div>
@@ -424,26 +493,75 @@ const clickSound = document.getElementById("clickSound");
 const noBtn = document.getElementById("noBtn");
 
 let current = 0;
+let musicStarted = false;
 
+/* PROGRESS */
 function updateProgress(){
     let percent = (current / (pages.length - 1)) * 100;
     progressBar.style.width = percent + "%";
 }
 
-function startStory(){
+/* BACKSOUND */
+function startMusic(){
+    if(musicStarted) return;
+
     music.volume = 0.6;
-    music.play().catch(()=>{});
+    music.muted = false;
+
+    music.play()
+    .then(()=>{
+        musicStarted = true;
+    })
+    .catch(()=>{
+        console.log("Musik belum bisa diputar. Browser butuh klik/tap user.");
+    });
+}
+
+/* Dicoba saat user klik/tap pertama */
+document.addEventListener("click", startMusic, {once:true});
+document.addEventListener("touchstart", startMusic, {once:true});
+
+/* START */
+function startStory(){
+    startMusic();
     nextPage();
 }
 
+/* CLICK SOUND */
 function playClick(){
-    clickSound.volume = 0.4;
+    if(!clickSound) return;
+
+    clickSound.volume = 0.35;
     clickSound.currentTime = 0;
+
     clickSound.play().catch(()=>{});
 }
 
+/* VIDEO AUTOPLAY */
+function handleVideos(){
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach(video=>{
+        video.pause();
+    });
+
+    const activeVideo = pages[current].querySelector("video");
+
+    if(activeVideo){
+        activeVideo.muted = true;
+        activeVideo.playsInline = true;
+        activeVideo.currentTime = 0;
+
+        activeVideo.play().catch(()=>{
+            console.log("Video autoplay diblokir browser.");
+        });
+    }
+}
+
+/* NEXT PAGE */
 function nextPage(){
     playClick();
+    startMusic();
 
     pages[current].classList.remove("active");
 
@@ -456,10 +574,13 @@ function nextPage(){
     pages[current].classList.add("active");
 
     updateProgress();
+    handleVideos();
 }
 
+/* YES BUTTON */
 function yes(){
     playClick();
+    startMusic();
 
     document.getElementById("proposal").classList.remove("active");
     document.getElementById("finish").classList.add("active");
@@ -470,6 +591,7 @@ function yes(){
     loveExplosion();
 }
 
+/* TOMBOL TIDAK KABUR */
 function moveButton(){
     const buttonWidth = noBtn.offsetWidth;
     const buttonHeight = noBtn.offsetHeight;
@@ -499,6 +621,7 @@ noBtn.addEventListener("click", function(e){
     moveButton();
 });
 
+/* FLOATING HEART */
 function createHeart(){
     let heart = document.createElement("div");
 
@@ -511,7 +634,7 @@ function createHeart(){
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.bottom = "-20px";
     heart.style.fontSize = (15 + Math.random() * 30) + "px";
-    heart.style.animation = 
+    heart.style.animation =
     "float " + (3 + Math.random() * 4) + "s linear";
 
     document.body.appendChild(heart);
@@ -523,6 +646,7 @@ function createHeart(){
 
 setInterval(createHeart,400);
 
+/* FINAL LOVE EXPLOSION */
 function loveExplosion(){
     for(let i = 0; i < 80; i++){
         setTimeout(()=>{
