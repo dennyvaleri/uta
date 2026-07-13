@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>Our Love Story ❤️</title>
 
+
 <style>
+
 
 *{
     box-sizing:border-box;
 }
 
+
+
 body{
 
     margin:0;
+
     height:100vh;
+
     overflow:hidden;
 
-    font-family:
-    'Segoe UI',
-    sans-serif;
+    font-family:'Segoe UI',sans-serif;
 
     color:white;
 
@@ -30,12 +36,18 @@ body{
 }
 
 
-/* BACKGROUND BLUE CINEMATIC */
+
+/* =========================
+   BLUE CINEMATIC BACKGROUND
+========================= */
+
 
 .bg{
 
     position:fixed;
+
     inset:0;
+
 
     background:
 
@@ -46,16 +58,22 @@ body{
 
     url('https://images.unsplash.com/photo-1501577316686-a5cbf6c1df7e');
 
+
     background-size:cover;
+
     background-position:center;
+
 
     transform:scale(1.08);
 
+
     animation:bgMove 20s infinite alternate;
+
 
     z-index:-2;
 
 }
+
 
 
 .bg::after{
@@ -81,69 +99,103 @@ body{
 }
 
 
+
 @keyframes bgMove{
 
-from{
-    transform:scale(1.08);
+    from{
+
+        transform:scale(1.08);
+
+    }
+
+
+    to{
+
+        transform:scale(1.18);
+
+    }
+
 }
 
-to{
-    transform:scale(1.18);
-}
-
-}
 
 
 @keyframes pulse{
 
-from{
-opacity:.5;
+    from{
+
+        opacity:.5;
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+    }
+
 }
 
-to{
-opacity:1;
-}
-
-}
 
 
 
 
-/* MUSIC */
+/* =========================
+   AUDIO
+========================= */
+
 
 audio{
+
     display:none;
+
 }
 
 
 
-/* STORY BAR */
+
+
+/* =========================
+   STORY PROGRESS BAR
+========================= */
+
 
 .progress{
 
     position:fixed;
 
+
     top:15px;
+
     left:20px;
+
     right:20px;
+
 
     height:5px;
 
+
     background:
+
     rgba(255,255,255,.25);
+
 
     border-radius:20px;
 
+
     overflow:hidden;
+
 
     z-index:1000;
 
 }
 
 
+
 .progress-bar{
 
     height:100%;
+
 
     width:0%;
 
@@ -151,9 +203,9 @@ audio{
     background:
 
     linear-gradient(
-    90deg,
-    #60a5fa,
-    #ec4899
+        90deg,
+        #60a5fa,
+        #ec4899
     );
 
 
@@ -165,23 +217,30 @@ audio{
 
 
 
-/* PAGE */
+/* =========================
+   PAGE
+========================= */
+
 
 .page{
 
     position:absolute;
+
 
     inset:0;
 
 
     display:none;
 
+
     justify-content:center;
+
 
     align-items:center;
 
 
     padding:25px;
+
 
     text-align:center;
 
@@ -189,9 +248,11 @@ audio{
 }
 
 
+
 .page.active{
 
     display:flex;
+
 
     animation:
 
@@ -201,10 +262,18 @@ audio{
 
 
 
+
+
+/* =========================
+   GLASS CARD
+========================= */
+
+
 .content{
 
 
     max-width:750px;
+
 
     width:100%;
 
@@ -212,39 +281,51 @@ audio{
     padding:40px 25px;
 
 
+
     background:
 
+
     linear-gradient(
-    135deg,
-    rgba(255,255,255,.18),
-    rgba(96,165,250,.12)
+        135deg,
+        rgba(255,255,255,.18),
+        rgba(96,165,250,.12)
     );
 
 
-    backdrop-filter:
-    blur(20px);
+
+    backdrop-filter:blur(20px);
+
 
 
     border:
 
-    1px solid
-    rgba(255,255,255,.25);
+    1px solid rgba(255,255,255,.25);
+
 
 
     border-radius:35px;
 
 
+
     box-shadow:
 
-    0 30px 80px
-    rgba(0,20,80,.7);
+
+    0 30px 80px rgba(0,20,80,.7);
 
 
 }
 
 
 
+
+
+/* =========================
+   TEXT
+========================= */
+
+
 h1{
+
 
     font-size:
 
@@ -256,12 +337,16 @@ h1{
 
     text-shadow:
 
+
     0 0 20px #60a5fa;
+
 
 }
 
 
+
 p{
+
 
     font-size:
 
@@ -270,26 +355,36 @@ p{
 
     line-height:1.7;
 
+
 }
 
 
 
 .date{
 
+
     color:#dbeafe;
 
+
     font-size:20px;
+
 
 }
 
 
 
-/* BUTTON */
+
+
+/* =========================
+   BUTTON
+========================= */
+
 
 button{
 
 
     margin-top:30px;
+
 
     padding:15px 40px;
 
@@ -310,6 +405,7 @@ button{
 
 
 
+
 .next,
 .yes{
 
@@ -319,35 +415,20 @@ button{
 
     background:
 
+
     linear-gradient(
-    45deg,
-    #2563eb,
-    #ec4899
+        45deg,
+        #2563eb,
+        #ec4899
     );
 
 
     box-shadow:
 
-    0 15px 35px
-    rgba(37,99,235,.5);
 
-.no{
-
-    background:white;
-
-    color:#333;
-
-    position:absolute;
-
-    transition:
-    left .25s ease,
-    top .25s ease;
+    0 15px 35px rgba(37,99,235,.5);
 
 
-    z-index:10;
-
-}
-    
 }
 
 
@@ -356,14 +437,54 @@ button{
 .yes:hover{
 
 
-transform:scale(1.08);
+    transform:scale(1.08);
 
 
 }
 
 
 
-/* IMAGE */
+
+
+/* =========================
+   BUTTON KABUR
+========================= */
+
+
+.no{
+
+
+    background:white;
+
+
+    color:#333;
+
+
+    position:absolute;
+
+
+    transition:
+
+
+    left .25s ease,
+
+    top .25s ease,
+
+    transform .2s ease;
+
+
+    z-index:10;
+
+
+}
+
+
+
+
+
+/* =========================
+   IMAGE VIDEO
+========================= */
 
 
 img,
@@ -371,6 +492,7 @@ video{
 
 
     width:90%;
+
 
     max-width:450px;
 
@@ -390,13 +512,16 @@ video{
     display:block;
 
 
+
     box-shadow:
 
-    0 25px 60px
-    rgba(0,0,0,.5);
+
+    0 25px 60px rgba(0,0,0,.5);
+
 
 
     animation:
+
 
     photoZoom 8s infinite alternate;
 
@@ -407,660 +532,217 @@ video{
 
 @keyframes photoZoom{
 
-from{
 
-transform:scale(1);
+    from{
+
+        transform:scale(1);
+
+    }
+
+
+    to{
+
+        transform:scale(1.08);
+
+    }
 
 }
 
-to{
-
-transform:scale(1.08);
-
-}
-
-}
 
 
 
+
+
+/* =========================
+   PAGE TRANSITION
+========================= */
 
 
 @keyframes cinematic{
 
-from{
 
-opacity:0;
+    from{
 
-transform:
-scale(1.08)
-translateY(40px);
 
-filter:blur(10px);
+        opacity:0;
+
+
+        transform:
+
+        scale(1.08)
+
+        translateY(40px);
+
+
+
+        filter:blur(10px);
+
+
+    }
+
+
+    to{
+
+
+        opacity:1;
+
+
+        transform:none;
+
+
+        filter:blur(0);
+
+
+    }
 
 }
 
-to{
 
-opacity:1;
 
-transform:none;
 
-filter:blur(0);
 
-}
+/* =========================
+   MOBILE
+========================= */
 
-}
-
-/* MOBILE OPTIMIZATION */
 
 @media(max-width:600px){
 
+
     .content{
+
 
         padding:25px 18px;
 
+
         border-radius:25px;
 
+
     }
+
 
 
     h1{
 
+
         font-size:38px;
 
+
     }
+
 
 
     p{
 
+
         font-size:18px;
 
+
     }
+
 
 
     .date{
 
+
         font-size:16px;
 
+
     }
+
 
 
     img,
     video{
 
+
         width:95%;
+
 
         max-height:45vh;
 
+
         border-radius:20px;
 
+
     }
+
 
 
     button{
 
+
         padding:13px 32px;
+
 
         font-size:16px;
 
+
     }
+
 
 
     .progress{
 
+
         top:10px;
+
 
         left:12px;
 
+
         right:12px;
+
 
     }
 
+
 }
-</style>
-
-</head>
-
-
-<body>
-
-
-<div class="bg"></div>
-
-
-<!-- BACKSOUND -->
-
-<audio id="music" loop>
-
-    <source src="backsound.mp3" type="audio/mpeg">
-
-</audio>
-
-
-<audio id="clickSound">
-
-    <source src="click.mp3" type="audio/mpeg">
-
-</audio>
-
-
-
-<!-- PROGRESS -->
-
-<div class="progress">
-
-    <div class="progress-bar" id="progressBar"></div>
-
-</div>
-
-
-
-
-
-<!-- INTRO -->
-
-<div class="page active">
-
-<div class="content">
-
-
-<h1>
-Our Love Story ❤️
-</h1>
-
-
-<p>
-Sudah 6 bulan, yey.<br>
-Yuk lihat dikit rekapnyaa
-</p>
-
-
-<button class="next" onclick="startStory()">
-
-MULAI
-
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<!-- PAGE 1 -->
-
-<div class="page">
-
-<div class="content">
-
-
-<h1>
-Chat pertama kita
-</h1>
-
-
-<div class="date">
-14 Januari 2026
-</div>
-
-
-<img src="foto1.jpeg">
-
-
-<button class="next" onclick="nextPage()">
-
-LANJUT
-
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-<!-- PAGE 2 -->
-
-<div class="page">
-
-<div class="content">
-
-
-<h1>
-Telfonan pertama kita
-</h1>
-
-
-<div class="date">
-14 Januari 2026
-</div>
-
-
-<img src="foto2.jpeg">
-
-
-<button class="next" onclick="nextPage()">
-
-LANJUT
-
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-<!-- PAGE 3 -->
-
-<div class="page">
-
-<div class="content">
-
-
-<h1>
-25 Januari 2026
-</h1>
-
-
-<p>
-
-Aku mabok dan kamu masih
-<br>
-nanya nanyain akuu 🥺
-
-</p>
-
-
-<video controls>
-
-<source src="video1.mp4">
-
-</video>
-
-
-<button class="next" onclick="nextPage()">
-
-LANJUT
-
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<!-- PAGE 4 -->
-
-<div class="page">
-
-<div class="content">
-
-
-<h1>
-16 Februari 2026
-</h1>
-
-
-<p>
-
-Post foto kamu pertama kali
-di story IG.
-
-<br><br>
-
-SEMUA ORANG HARUS TAU
-
-<br>
-
-AKU PUNYA PACAR CANTIKK!!!!
-
-</p>
-
-
-<img src="foto3.jpeg">
-
-
-<button class="next" onclick="nextPage()">
-
-LANJUT
-
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-
-<!-- PAGE 5 -->
-
-<div class="page">
-
-<div class="content">
-
-
-<h1>
-17 Februari 2026
-</h1>
-
-
-<p>
-
-Muka aku muncul pertama kali
-di story kamuuu ❤️
-
-<br><br>
-
-Merasa dicintaiii
-
-</p>
-
-
-<img src="foto4.jpeg">
-
-
-<button class="next" onclick="nextPage()">
-
-LANJUT
-
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<!-- PAGE 6 -->
-
-<div class="page">
-
-<div class="content">
-
-
-<h1>
-Selama 6 bulan ini...
-</h1>
-
-
-<p>
-
-Menyenangkan sekali sayangg ❤️
-
-<br><br>
-
-Banyak cerita.
-Banyak ketawa.
-Banyak belajar.
-
-</p>
-
-
-<button class="next" onclick="nextPage()">
-
-LANJUT
-
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<!-- PAGE 7 -->
-
-<div class="page">
-
-<div class="content">
-
-
-<h1>
-Aku sadar...
-</h1>
-
-
-<p>
-
-Sekarang aku sudah tidak
-merencanakan masa depan
-hanya untuk diriku sendiri.
-
-<br><br>
-
-Karena sekarang ada kamu
-di dalam rencana-rencanaku.
-
-</p>
-
-
-<button class="next" onclick="nextPage()">
-
-LANJUT
-
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<!-- PAGE 8 -->
-
-<div class="page">
-
-<div class="content">
-
-
-<h1>
-Satu pertanyaan...
-</h1>
-
-
-<p>
-
-Tapi ternyata ada satu hal
-yang harus kita selesaikan.
-
-<br><br>
-
-Sesuatu yang sebenarnya
-sudah lama kita tahu...
-
-</p>
-
-
-<button class="next" onclick="nextPage()">
-
-LANJUT
-
-</button>
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
-<!-- PROPOSAL -->
-
-<div class="page" id="proposal">
-
-
-<div class="content">
-
-
-<h1>
-Kamu mau gak...
-</h1>
-
-
-<h1>
-
-JADI PACAR AKU? ❤️
-
-</h1>
-
-
-
-<button class="yes" onclick="yes()">
-
-MAUUUU ❤️
-
-</button>
-
-
-
-<button class="no" id="noBtn">
-
-Tidak 😢
-
-</button>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<!-- FINAL -->
-
-<div class="page" id="finish">
-
-
-<div class="content">
-
-
-<h1>
-
-YEYYY ❤️❤️❤️
-
-</h1>
-
-
-<p>
-
-14 JULI 2026
-
-<br>
-
-Kita jadikan hari kita yaa.
-
-<br><br>
-
-Terima kasih sudah memilih aku.
-
-</p>
-
-
-
-<img src="foto_akhir.jpeg">
-
-
-
-</div>
-
-</div>
-
-
-
-
-
-
-
 
 
 <script>
 
 
-const pages =
-document.querySelectorAll(".page");
+// =========================
+// ELEMENT
+// =========================
 
 
-const progressBar =
-document.getElementById("progressBar");
+const pages = document.querySelectorAll(".page");
 
+const progressBar = document.getElementById("progressBar");
 
-const music =
-document.getElementById("music");
+const music = document.getElementById("music");
 
+const clickSound = document.getElementById("clickSound");
 
-const clickSound =
-document.getElementById("clickSound");
-
-
-const noBtn =
-document.getElementById("noBtn");
+const noBtn = document.getElementById("noBtn");
 
 
 
-let current=0;
+let current = 0;
 
+
+
+
+
+// =========================
+// PROGRESS BAR
+// =========================
 
 
 function updateProgress(){
 
 
-let percent =
-(current/(pages.length-1))*100;
+    let percent =
+
+    (current / (pages.length - 1)) * 100;
 
 
-progressBar.style.width =
-percent+"%";
+
+    progressBar.style.width =
+
+    percent + "%";
 
 
 }
@@ -1069,19 +751,27 @@ percent+"%";
 
 
 
-// START MUSIC
+
+
+// =========================
+// START STORY + MUSIC
+// =========================
+
 
 function startStory(){
 
 
-music.volume = 0.6;
+    // volume 60%
+
+    music.volume = 0.6;
 
 
-music.play()
-.catch(()=>{});
+    music.play()
+    .catch(()=>{});
 
 
-nextPage();
+
+    nextPage();
 
 
 }
@@ -1089,19 +779,25 @@ nextPage();
 
 
 
+
+
+
+// =========================
+// CLICK SOUND
+// =========================
 
 
 function playClick(){
 
 
-clickSound.volume=.4;
+    clickSound.volume = 0.4;
 
 
-clickSound.currentTime=0;
+    clickSound.currentTime = 0;
 
 
-clickSound.play()
-.catch(()=>{});
+    clickSound.play()
+    .catch(()=>{});
 
 
 }
@@ -1109,79 +805,89 @@ clickSound.play()
 
 
 
+
+
+
+// =========================
+// NEXT PAGE
+// =========================
 
 
 function nextPage(){
 
 
-playClick();
+    playClick();
 
 
 
-pages[current]
-.classList.remove("active");
+    pages[current]
+    .classList.remove("active");
 
 
 
-current++;
+    current++;
 
 
 
-if(current>=pages.length){
+    if(current >= pages.length){
 
-current=pages.length-1;
+        current = pages.length - 1;
+
+    }
+
+
+
+    pages[current]
+    .classList.add("active");
+
+
+
+    updateProgress();
+
+
 
 }
 
 
 
-pages[current]
-.classList.add("active");
-
-
-
-updateProgress();
-
-
-}
 
 
 
 
 
-
-
-
+// =========================
 // YES BUTTON
+// =========================
 
 
 function yes(){
 
 
-playClick();
-
-
-document
-.getElementById("proposal")
-.classList.remove("active");
+    playClick();
 
 
 
-document
-.getElementById("finish")
-.classList.add("active");
+    document
+    .getElementById("proposal")
+    .classList.remove("active");
 
 
 
-current =
-pages.length-1;
-
-
-updateProgress();
+    document
+    .getElementById("finish")
+    .classList.add("active");
 
 
 
-loveExplosion();
+    current = pages.length - 1;
+
+
+
+    updateProgress();
+
+
+
+    loveExplosion();
 
 
 }
@@ -1193,52 +899,136 @@ loveExplosion();
 
 
 
-// BUTTON KABUR
+// =========================
+// TOMBOL TIDAK KABUR
+// =========================
 
 
 function moveButton(){
 
 
+    const buttonWidth = noBtn.offsetWidth;
 
-let x =
-Math.random()*80;
-
-
-let y =
-Math.random()*80;
+    const buttonHeight = noBtn.offsetHeight;
 
 
 
-noBtn.style.left =
-x+"vw";
+    const maxX =
+
+    window.innerWidth - buttonWidth - 20;
 
 
 
-noBtn.style.top =
-y+"vh";
+    const maxY =
+
+    window.innerHeight - buttonHeight - 20;
+
+
+
+
+    const x =
+
+    Math.random() * maxX;
+
+
+
+    const y =
+
+    Math.random() * maxY;
+
+
+
+
+
+    noBtn.style.left =
+
+    x + "px";
+
+
+
+    noBtn.style.top =
+
+    y + "px";
+
+
+
+
+
+    noBtn.style.transform =
+
+    "rotate(" +
+
+    (Math.random()*30-15)
+
+    + "deg)";
+
 
 
 }
 
 
 
+
+
+// Desktop
+
 noBtn.addEventListener(
-"mouseover",
+
+"mouseenter",
+
 moveButton
+
 );
 
 
 
+
+// Mobile
+
 noBtn.addEventListener(
+
 "touchstart",
-moveButton
+
+function(e){
+
+
+    e.preventDefault();
+
+
+    moveButton();
+
+
+},
+
+{
+
+passive:false
+
+}
+
 );
 
 
+
+
+
+// Anti klik
 
 noBtn.addEventListener(
+
 "click",
-moveButton
+
+function(e){
+
+
+    e.preventDefault();
+
+
+    moveButton();
+
+
+}
+
 );
 
 
@@ -1249,70 +1039,105 @@ moveButton
 
 
 
-
-// HEART FLOAT
+// =========================
+// FLOATING HEART
+// =========================
 
 
 function createHeart(){
 
 
-let heart =
-document.createElement("div");
 
+    let heart =
 
-heart.className="heart";
-
-
-
-heart.innerHTML =
-["💙","🤍","❤️","✨"]
-[
-Math.floor(
-Math.random()*4
-)
-];
+    document.createElement("div");
 
 
 
-heart.style.position="absolute";
-
-
-heart.style.left =
-Math.random()*100+"vw";
+    heart.className="heart";
 
 
 
-heart.style.bottom="-20px";
+    heart.innerHTML =
+
+    [
+
+        "💙",
+
+        "🤍",
+
+        "❤️",
+
+        "✨"
+
+    ]
+
+    [
+
+    Math.floor(
+
+    Math.random()*4
+
+    )
+
+    ];
 
 
 
-heart.style.fontSize =
-(15+Math.random()*30)+"px";
+
+
+    heart.style.position="absolute";
 
 
 
-heart.style.animation =
-"float "+
+    heart.style.left =
 
-(3+Math.random()*4)
-
-+"s linear";
+    Math.random()*100 + "vw";
 
 
 
-document.body.appendChild(heart);
+    heart.style.bottom="-20px";
 
 
 
-setTimeout(()=>{
+    heart.style.fontSize =
 
-heart.remove();
 
-},6000);
+    (15 + Math.random()*30)
+
+    +"px";
+
+
+
+
+    heart.style.animation =
+
+    "float " +
+
+    (3+Math.random()*4)
+
+    +"s linear";
+
+
+
+
+    document.body.appendChild(heart);
+
+
+
+
+    setTimeout(()=>{
+
+
+        heart.remove();
+
+
+    },6000);
 
 
 
 }
+
 
 
 setInterval(createHeart,400);
@@ -1324,68 +1149,880 @@ setInterval(createHeart,400);
 
 
 
-// FINAL EFFECT
+
+// =========================
+// FINAL LOVE EXPLOSION
+// =========================
 
 
 function loveExplosion(){
 
 
-for(let i=0;i<80;i++){
 
-
-setTimeout(()=>{
-
-
-let item =
-document.createElement("div");
-
-
-item.innerHTML =
-["❤️","💙","✨","💕"]
-[
-Math.floor(
-Math.random()*4
-)
-];
-
-
-item.style.position="absolute";
-
-item.style.left =
-Math.random()*100+"vw";
-
-item.style.top =
-Math.random()*100+"vh";
-
-
-item.style.fontSize =
-(20+Math.random()*35)+"px";
-
-
-item.style.animation =
-"sparkle 1.5s forwards";
-
-
-document.body.appendChild(item);
+    for(let i=0;i<80;i++){
 
 
 
-setTimeout(()=>{
-
-item.remove();
-
-},1500);
+        setTimeout(()=>{
 
 
 
-},i*30);
+            let item =
+
+            document.createElement("div");
+
+
+
+            item.innerHTML =
+
+
+            [
+
+            "❤️",
+
+            "💙",
+
+            "✨",
+
+            "💕"
+
+            ]
+
+            [
+
+            Math.floor(
+
+            Math.random()*4
+
+            )
+
+            ];
+
+
+
+
+            item.style.position="absolute";
+
+
+
+            item.style.left =
+
+            Math.random()*100+"vw";
+
+
+
+            item.style.top =
+
+            Math.random()*100+"vh";
+
+
+
+            item.style.fontSize =
+
+            (20 + Math.random()*35)
+
+            +"px";
+
+
+
+
+            item.style.zIndex=999;
+
+
+
+            item.style.animation =
+
+            "sparkle 1.5s forwards";
+
+
+
+            document.body.appendChild(item);
+
+
+
+
+            setTimeout(()=>{
+
+
+                item.remove();
+
+
+            },1500);
+
+
+
+
+        },i*30);
+
+
+
+    }
+
 
 
 }
 
 
 
+
+
+// =========================
+// TAMBAHAN ANIMASI SPARKLE
+// =========================
+
+
+const style = document.createElement("style");
+
+
+style.innerHTML = `
+
+
+.heart{
+
+    animation-name:float;
+
 }
+
+
+
+@keyframes float{
+
+
+    from{
+
+        transform:
+
+        translateY(100vh)
+
+        rotate(0deg);
+
+        opacity:1;
+
+    }
+
+
+
+    to{
+
+        transform:
+
+        translateY(-20vh)
+
+        rotate(360deg);
+
+        opacity:0;
+
+    }
+
+
+}
+
+
+
+@keyframes sparkle{
+
+
+    from{
+
+        transform:
+
+        scale(.5)
+
+        translateY(0);
+
+        opacity:1;
+
+    }
+
+
+
+    to{
+
+        transform:
+
+        scale(2)
+
+        translateY(-100px);
+
+        opacity:0;
+
+    }
+
+
+}
+
+
+`;
+
+
+
+document.head.appendChild(style);
+
+
+
+</script>
+
+
+</body>
+
+</html>
+<script>
+
+
+// =========================
+// ELEMENT
+// =========================
+
+
+const pages = document.querySelectorAll(".page");
+
+const progressBar = document.getElementById("progressBar");
+
+const music = document.getElementById("music");
+
+const clickSound = document.getElementById("clickSound");
+
+const noBtn = document.getElementById("noBtn");
+
+
+
+let current = 0;
+
+
+
+
+
+// =========================
+// PROGRESS BAR
+// =========================
+
+
+function updateProgress(){
+
+
+    let percent =
+
+    (current / (pages.length - 1)) * 100;
+
+
+
+    progressBar.style.width =
+
+    percent + "%";
+
+
+}
+
+
+
+
+
+
+
+// =========================
+// START STORY + MUSIC
+// =========================
+
+
+function startStory(){
+
+
+    // volume 60%
+
+    music.volume = 0.6;
+
+
+    music.play()
+    .catch(()=>{});
+
+
+
+    nextPage();
+
+
+}
+
+
+
+
+
+
+
+// =========================
+// CLICK SOUND
+// =========================
+
+
+function playClick(){
+
+
+    clickSound.volume = 0.4;
+
+
+    clickSound.currentTime = 0;
+
+
+    clickSound.play()
+    .catch(()=>{});
+
+
+}
+
+
+
+
+
+
+
+// =========================
+// NEXT PAGE
+// =========================
+
+
+function nextPage(){
+
+
+    playClick();
+
+
+
+    pages[current]
+    .classList.remove("active");
+
+
+
+    current++;
+
+
+
+    if(current >= pages.length){
+
+        current = pages.length - 1;
+
+    }
+
+
+
+    pages[current]
+    .classList.add("active");
+
+
+
+    updateProgress();
+
+
+
+}
+
+
+
+
+
+
+
+
+// =========================
+// YES BUTTON
+// =========================
+
+
+function yes(){
+
+
+    playClick();
+
+
+
+    document
+    .getElementById("proposal")
+    .classList.remove("active");
+
+
+
+    document
+    .getElementById("finish")
+    .classList.add("active");
+
+
+
+    current = pages.length - 1;
+
+
+
+    updateProgress();
+
+
+
+    loveExplosion();
+
+
+}
+
+
+
+
+
+
+
+
+// =========================
+// TOMBOL TIDAK KABUR
+// =========================
+
+
+function moveButton(){
+
+
+    const buttonWidth = noBtn.offsetWidth;
+
+    const buttonHeight = noBtn.offsetHeight;
+
+
+
+    const maxX =
+
+    window.innerWidth - buttonWidth - 20;
+
+
+
+    const maxY =
+
+    window.innerHeight - buttonHeight - 20;
+
+
+
+
+    const x =
+
+    Math.random() * maxX;
+
+
+
+    const y =
+
+    Math.random() * maxY;
+
+
+
+
+
+    noBtn.style.left =
+
+    x + "px";
+
+
+
+    noBtn.style.top =
+
+    y + "px";
+
+
+
+
+
+    noBtn.style.transform =
+
+    "rotate(" +
+
+    (Math.random()*30-15)
+
+    + "deg)";
+
+
+
+}
+
+
+
+
+
+// Desktop
+
+noBtn.addEventListener(
+
+"mouseenter",
+
+moveButton
+
+);
+
+
+
+
+// Mobile
+
+noBtn.addEventListener(
+
+"touchstart",
+
+function(e){
+
+
+    e.preventDefault();
+
+
+    moveButton();
+
+
+},
+
+{
+
+passive:false
+
+}
+
+);
+
+
+
+
+
+// Anti klik
+
+noBtn.addEventListener(
+
+"click",
+
+function(e){
+
+
+    e.preventDefault();
+
+
+    moveButton();
+
+
+}
+
+);
+
+
+
+
+
+
+
+
+
+// =========================
+// FLOATING HEART
+// =========================
+
+
+function createHeart(){
+
+
+
+    let heart =
+
+    document.createElement("div");
+
+
+
+    heart.className="heart";
+
+
+
+    heart.innerHTML =
+
+    [
+
+        "💙",
+
+        "🤍",
+
+        "❤️",
+
+        "✨"
+
+    ]
+
+    [
+
+    Math.floor(
+
+    Math.random()*4
+
+    )
+
+    ];
+
+
+
+
+
+    heart.style.position="absolute";
+
+
+
+    heart.style.left =
+
+    Math.random()*100 + "vw";
+
+
+
+    heart.style.bottom="-20px";
+
+
+
+    heart.style.fontSize =
+
+
+    (15 + Math.random()*30)
+
+    +"px";
+
+
+
+
+    heart.style.animation =
+
+    "float " +
+
+    (3+Math.random()*4)
+
+    +"s linear";
+
+
+
+
+    document.body.appendChild(heart);
+
+
+
+
+    setTimeout(()=>{
+
+
+        heart.remove();
+
+
+    },6000);
+
+
+
+}
+
+
+
+setInterval(createHeart,400);
+
+
+
+
+
+
+
+
+
+// =========================
+// FINAL LOVE EXPLOSION
+// =========================
+
+
+function loveExplosion(){
+
+
+
+    for(let i=0;i<80;i++){
+
+
+
+        setTimeout(()=>{
+
+
+
+            let item =
+
+            document.createElement("div");
+
+
+
+            item.innerHTML =
+
+
+            [
+
+            "❤️",
+
+            "💙",
+
+            "✨",
+
+            "💕"
+
+            ]
+
+            [
+
+            Math.floor(
+
+            Math.random()*4
+
+            )
+
+            ];
+
+
+
+
+            item.style.position="absolute";
+
+
+
+            item.style.left =
+
+            Math.random()*100+"vw";
+
+
+
+            item.style.top =
+
+            Math.random()*100+"vh";
+
+
+
+            item.style.fontSize =
+
+            (20 + Math.random()*35)
+
+            +"px";
+
+
+
+
+            item.style.zIndex=999;
+
+
+
+            item.style.animation =
+
+            "sparkle 1.5s forwards";
+
+
+
+            document.body.appendChild(item);
+
+
+
+
+            setTimeout(()=>{
+
+
+                item.remove();
+
+
+            },1500);
+
+
+
+
+        },i*30);
+
+
+
+    }
+
+
+
+}
+
+
+
+
+
+// =========================
+// TAMBAHAN ANIMASI SPARKLE
+// =========================
+
+
+const style = document.createElement("style");
+
+
+style.innerHTML = `
+
+
+.heart{
+
+    animation-name:float;
+
+}
+
+
+
+@keyframes float{
+
+
+    from{
+
+        transform:
+
+        translateY(100vh)
+
+        rotate(0deg);
+
+        opacity:1;
+
+    }
+
+
+
+    to{
+
+        transform:
+
+        translateY(-20vh)
+
+        rotate(360deg);
+
+        opacity:0;
+
+    }
+
+
+}
+
+
+
+@keyframes sparkle{
+
+
+    from{
+
+        transform:
+
+        scale(.5)
+
+        translateY(0);
+
+        opacity:1;
+
+    }
+
+
+
+    to{
+
+        transform:
+
+        scale(2)
+
+        translateY(-100px);
+
+        opacity:0;
+
+    }
+
+
+}
+
+
+`;
+
+
+
+document.head.appendChild(style);
 
 
 
