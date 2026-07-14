@@ -281,7 +281,7 @@ video{
 
 <!-- BACKSOUND -->
 <audio id="music" loop preload="auto">
-    <source src="./backsound.mp3" type="audio/mpeg">
+    <source src="./backsound1.mp3" type="audio/mpeg">
 </audio>
 
 <!-- SOUND CLICK OPSIONAL -->
@@ -487,9 +487,9 @@ video{
 
         <button 
             class="next" 
-            onclick="window.open('https://drive.google.com/file/d/1Ig0N1n6MBJ1FgMlZ_kkqP0yIfKgm_fx1/view?usp=drive_link', '_blank')"
+            onclick="openMemoryVideo()"
         >
-            LANJUT KE VIDEO MEMORI
+            ADA TAMBAHAN VIDEO
         </button>
     </div>
 </div>
@@ -511,6 +511,16 @@ function updateProgress(){
 }
 
 /* BACKSOUND */
+function openMemoryVideo(){
+    playClick();
+
+    music.pause();
+    music.currentTime = 0;
+    musicStarted = false;
+
+    window.open('https://drive.google.com/file/d/ID_FILE_KAMU/view?usp=sharing', '_blank');
+}
+    
 function startMusic(){
     if(musicStarted) return;
 
